@@ -6,33 +6,34 @@ import LivrosDestaque from "./componentes/LivrosDestaque/LivrosDestaque"
 import Topicos from "./componentes/Topicos/Topicos"
 import Newsletter from "./componentes/Newsletter/Newsletter"
 import Rodape from "./componentes/Rodape/Rodape"
+import { LivrosProvider } from "./context/LivrosContext/LivrosContext"
 
 const livros = [
   {
-    id: 1,
-    titulo: 'JavaScript Assertivo',
-    resumo: 'Testes e qualidade de código em todas as camadas da aplicação',
-    autor: 'Gabriel Ramos',
-    preco: 29.9,
-    capa: '/livros/js.png'
+      id: 1,
+      titulo: 'JavaScript Assertivo',
+      resumo: 'Testes e qualidade de código em todas as camadas da aplicação',
+      autor: 'Gabriel Ramos',
+      preco: 29.9,
+      capa: '/livros/js.png'
   },
   {
-    id: 2,
-    titulo: 'Apache Kafka e Spring Boot',
-    resumo: 'Comunicação assíncrona entre microsserviços',
-    autor: 'Eduardo Felipe Zambom Santana',
-    preco: 29.9,
-    capa: '/livros/kafka.png'
+      id: 2,
+      titulo: 'Apache Kafka e Spring Bootsss',
+      resumo: 'Comunicação assíncrona entre microsserviços',
+      autor: 'Eduardo Felipe Zambom Santana',
+      preco: 29.9,
+      capa: '/livros/kafka.png'
   },
   {
-    id: 3,
-    titulo: 'Liderança em Design',
-    resumo: 'Habilidades de gestão para alavancar sua carreira',
-    autor: 'Victor Zanini',
-    preco: 29.9,
-    capa: '/livros/lideranca.png'
+      id: 3,
+      titulo: 'Liderança em Design',
+      resumo: 'Habilidades de gestão para alavancar sua carreira',
+      autor: 'Victor Zanini',
+      preco: 29.9,
+      capa: '/livros/lideranca.png'
   }
-]
+];
 
 function App() {
   return (
@@ -43,7 +44,9 @@ function App() {
       <Titulo>
         Últimos lançamentos
       </Titulo>
-      <LivrosDestaque />
+      <LivrosProvider livros={livros}>
+        <LivrosDestaque />
+      </LivrosProvider>
       <Topicos />
       <Newsletter />
       <Rodape />

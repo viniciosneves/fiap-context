@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import CapaLivro from "../CapaLivro/CapaLivro"
 import CardLivro from "../CardLivro/CardLivro"
+import { useLivros } from "../../context/LivrosContext/LivrosContext"
+import BtnIcon from "../BtnIcon/BtnIcon"
 
 const ContainerLivros = styled.section`
   background: #EBECEE;
@@ -25,17 +27,14 @@ const UlEstilizada = styled.ul`
 `
 
 const LivrosDestaque = () => {
+    const { livros, verificarLivroSelecionado, selecionarLivro } = useLivros()
     return (<ContainerLivros>
         <UlEstilizada>
-            <li>
-                <CapaLivro src="/livros/js.png" />
-            </li>
-            <li>
-                <CapaLivro src="/livros/kafka.png"  $selecionado={true}/>
-            </li>
-            <li>
-                <CapaLivro src="/livros/lideranca.png" />
-            </li>
+            {livros.map(livro => <li key={livro.id}>
+                <BtnIcon onClick={() => selecionarLivro(livro)}>
+                    <CapaLivro src={livro.capa} $selecionado={verificarLivroSelecionado(livro)}/>
+                </BtnIcon>
+            </li>)}
         </UlEstilizada>
         <CardLivro />
     </ContainerLivros>)

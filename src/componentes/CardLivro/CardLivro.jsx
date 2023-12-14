@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import BtnIcon from "../BtnIcon/BtnIcon"
 import Botao from "../Botao/Botao"
+import { useLivros } from "../../context/LivrosContext/LivrosContext"
 
 const Card = styled.div`
     border-radius: 10px;
@@ -73,6 +74,7 @@ const ContainerFlex = styled.div`
 `
 
 const CardLivro = () => {
+    const { livroSelecionado } = useLivros()
     return (<Card>
         <ContainerFlex>
             <Sobre>Sobre o livro:</Sobre>
@@ -90,12 +92,12 @@ const CardLivro = () => {
             </UlFlex>
         </ContainerFlex>
         <div>
-            <Titulo>Liderança em Design</Titulo>
+            <Titulo>{livroSelecionado.titulo}</Titulo>
             <Tipografia>
-                Habilidades de gestão para alavancar sua carreira
+                {livroSelecionado.resumo}
             </Tipografia>
             <Tipografia>
-                Por: Vitor Zanini
+                Por: {livroSelecionado.autor}
             </Tipografia>
         </div>
         <ContainerFlex>
@@ -107,7 +109,7 @@ const CardLivro = () => {
                 </Tipografia>
                 <Tipografia>
                     <Preco>
-                        R$ 29,90
+                        R$ {livroSelecionado.preco.toFixed(2)}
                     </Preco>
                 </Tipografia>
             </div>
